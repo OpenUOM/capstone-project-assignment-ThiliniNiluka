@@ -1,3 +1,15 @@
+/*
+import express from "express";
+import bodyParser from "body-parser";
+import {
+    initializeDatabase,
+    readTeachers,
+    readTeacherInfo,
+    addTeacher,
+    deleteTeacher,
+} from "./database.js";
+*/
+
 const express = require ("express");
 
 const {
@@ -26,6 +38,7 @@ app.get("/dbinitialize", async function (req, res) {
   res.setHeader("Content-Type", "application/json");
   res.end(JSON.stringify(data));
 });
+
 // ============== Teacher Related endpoints ==============
 
 app.get("/listTeachers", async function (req, res) {
@@ -45,6 +58,12 @@ app.post("/getTeacherInfo", async function (req, res) {
   res.end(JSON.stringify(data));
 });
 
+/*
+{
+  "id"; "teacher_id"
+}
+*/
+
 app.post("/addTeacher", async function (req, res) {
   let reqBody = req.body;
   console.log(
@@ -55,6 +74,14 @@ app.post("/addTeacher", async function (req, res) {
   res.setHeader("Content-Type", "application/json");
   res.end(JSON.stringify(data));
 });
+
+/*
+{
+  "id"; "teacher_id",
+  "name"; "teacher_name",
+  "age"; "teacher_age"
+}
+*/
 
 app.post("/editTeacher", async function (req, res) {
   let reqBody = req.body;
@@ -67,6 +94,14 @@ app.post("/editTeacher", async function (req, res) {
   res.end(JSON.stringify(data));
 });
 
+/*
+{
+  "name"; "teacher_name",
+  "age"; "teacher_age",
+  "id"; "teacher_id"
+}
+*/
+
 app.post("/deleteTeacher", async function (req, res) {
   let reqBody = req.body;
   console.log(
@@ -77,6 +112,12 @@ app.post("/deleteTeacher", async function (req, res) {
   res.setHeader("Content-Type", "application/json");
   res.end(JSON.stringify(data));
 });
+
+/*
+{
+  "id"; "teacher_id"
+}
+*/
 
 // ============== Student Related endpoints ==============
 
@@ -97,6 +138,12 @@ app.post("/getStudentInfo", async function (req, res) {
   res.end(JSON.stringify(data));
 });
 
+/*
+{
+  "id"; "student_id"
+}
+*/
+
 app.post("/addStudent", async function (req, res) {
   let reqBody = req.body;
   console.log(
@@ -113,6 +160,15 @@ app.post("/addStudent", async function (req, res) {
   res.end(JSON.stringify(data));
 });
 
+/*
+{
+  "id"; "student_id",
+  "name"; "student_name",
+  "age"; "student_age",
+  "age"; "student_hometown"
+}
+*/
+
 app.post("/deleteStudent", async function (req, res) {
   let reqBody = req.body;
   console.log(
@@ -124,6 +180,12 @@ app.post("/deleteStudent", async function (req, res) {
   res.end(JSON.stringify(data));
 });
 
+/*
+{
+  "id"; "student_id"
+}
+*/
+
 app.post("/editStudent", async function (req, res) {
   let reqBody = req.body;
   console.log(
@@ -134,5 +196,14 @@ app.post("/editStudent", async function (req, res) {
   res.setHeader("Content-Type", "application/json");
   res.end(JSON.stringify(data));
 });
+
+/*
+{
+  "id"; "student_id",
+  "name"; "student_name",
+  "age"; "student_age",
+  "age"; "student_hometown"
+}
+*/
 
 module.exports = app;
